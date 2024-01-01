@@ -1,9 +1,9 @@
-Testikaavio:
+squenceDiagram
+    participant browser
+    participant server
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
+    browser->>server: HTTP POST new_note
+    activate server
+    server->>browser: redirect
+    deactivate server
+    browser-server: HTTOP GET /notes
