@@ -10,7 +10,7 @@ sequenceDiagram
     server-->>browser: redirect to /exampleapp/notes
     deactivate server
 
-    Note right of browser: The server redirects the browser to the same page to refresh the notes and the contents of the example sequence diagram happens
+    Note left of server: The server redirects the browser to the same page to refresh it.
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
