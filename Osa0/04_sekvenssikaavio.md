@@ -1,8 +1,9 @@
-sequenceDiagram
-    participant browser
-    participant server
+Testikaavio:
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-    activate server
-    server-->>browser: HTML document
-    deactivate server
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
