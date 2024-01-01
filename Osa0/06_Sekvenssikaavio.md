@@ -3,7 +3,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    note rigth of browser: Käyttäjä kirjoittaa jotain 
+    note right of browser: Käyttäjä kirjoittaa jotain 
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
     
