@@ -1,63 +1,60 @@
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-    { name: 'Fundamentals of React', exercises: 10 },
-    { name: 'Using props to pass data', exercises: 17 },
-    { name: 'State of a component', exercises: 14 },
+  const course = {
+  name:'Half Stack application development',
+  parts:  [
+    { 
+      name: 'Fundamentals of React', 
+      exercises: 10 
+    },
+    { 
+      name: 'Using props to pass data', 
+      exercises: 17 
+    },
+    { 
+      name: 'State of a component', 
+      exercises: 14 
+    },
   ]
-
-const Header = (props) => {
-  return (
-    <h1>{props.headertext}</h1>
-  )
 }
-
-const Content = (props) => {
-  /*const contentItems = props.parts.map(element  =>
-  <Part key={element.name} partcontent = {element} />
-   ) */
-
-  //lähdin ehkä keulimaan listoja renderöimällä ja alempana foreachilla mutta halusin siistimpää koodia ja tietää miten sen voisi tehdä
-  //voipi siis olla vähän huonolla tavalla tehty ja kommentoin tämän kun katsoin tehtävänantoa ja näin sen esimerkin uudelleen
-  
-  return(
-    <div>
-       {/*  {contentItems} */}
-      <Part partcontent = {props.parts[0]} />
-      <Part partcontent = {props.parts[1]} />
-      <Part partcontent = {props.parts[2]} />
-    </div>
-  )
-}
-
-const Part = (props) => {
-  return (
-    <p>
-    {props.partcontent.name} {props.partcontent.exercises}
-    </p>
-  )
-  }
-  
-  const Footer = (props) => {
-    let total = 0
-    props.parts.forEach((element) => {
-      total += element.exercises
-      console.log(element)
-    })
-    
-    return(
-      <p>Number of exercises {total} </p>
-    )
-  }
-  
-    //ei ole ehkä paras tapa käyttää parts nimeä useaan kertaan mutta en nyt muutakaan keksinyt
     return (
       <div>
-        <Header headertext={course} />
-        <Content parts={parts} />
-        <Footer parts={parts} />
+        <Header headertext={course.name} />
+        <Content parts={course.parts} />
+        <Footer parts={course.parts} />
       </div>
     )
   }
+
+const Header = ({headertext}) => <h1>{headertext}</h1>
+  
+const Content = ({parts}) => {
+  const contentItems = parts.map(item  =>
+  <Part key={item.name} name = {item.name} exercises = {item.exercises}/>
+  )
+  // tiedän että tämä on vähän erilainen kuin tehtävänannossa mutta halusin tutustua map:piin ja saada koodia siistimmäksi
+  // destrukturoin myös propseja samalla kun luin osaa 1.c että saisin paremman käsityksen miten se toimii
+  return(
+    <div>
+      {contentItems} 
+      {/* Tässä myös tehtävänannossa haluttu tapa renderöidä contentti
+      <Part name = {parts[0].name} exercises = {parts[0].exercises} />
+      <Part name = {parts[1].name} exercises = {parts[1].exercises} />
+      <Part name = {parts[2].name} exercises = {parts[2].exercises} />
+      */}
+    </div>
+  )
+}
+  
+const Part = ({name, exercises}) => <p>{name} {exercises}</p>
+
+const Footer = ({parts}) => {
+  let total = 0
+  parts.forEach((element) => {
+    total += element.exercises
+  })
+  return(
+    <p>Number of exercises {total} </p>
+  )
+}
 
 export default App
